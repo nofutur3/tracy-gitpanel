@@ -48,12 +48,17 @@ class GitPanel implements IBarPanel
         }
 
         // remotes
+        if ($this->getRemotes() != null) {
+            $cntTable .= '<tr><td>Remotes</td><td> ' . $this->getRemotes() . ' </td></tr>';
+        }
 
         // tags
+        if ($this->getTags() != null) {
+            $cntTable .= '<tr><td>Tags</td><td> ' . $this->getTags() . ' </td></tr>';
+        }
 
         $content = '<div class=\"tracy-inner tracy-InfoPanel\"><table><tbody>' .
             $cntTable .
-            '<tr><td>Execution time</td><td>127.6 ms</td></tr>' .
             '</tbody></table></div>';
 
         return $title . $content;
@@ -111,6 +116,46 @@ class GitPanel implements IBarPanel
         }
 
         return null;
+    }
+
+    protected function getRemotes()
+    {
+        $dir = $this->getDirectory();
+
+        $files = scandir($dir . '/.git/refs/remotes');
+        $message = '';
+
+        if ($dir && is_array($files)) {
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..') {
+                        $message .= $file . ' ';
+                }
+            }
+            return $message;
+        }
+
+        return null;
+
+    }
+
+    protected function getTags()
+    {
+        $dir = $this->getDirectory();
+
+        $files = scandir($dir . '/.git/refs/tags');
+        $message = '';
+
+        if ($dir && is_array($files)) {
+            foreach ($files as $file) {
+                if ($file != '.' && $file != '..') {
+                    $message .= $file . ' ';
+                }
+            }
+            return $message;
+        }
+
+        return null;
+
     }
 
     private function getDirectory()

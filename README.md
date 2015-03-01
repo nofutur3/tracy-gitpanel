@@ -14,8 +14,5 @@ register panel
 ```
 nette:
     debugger:
-        bar: []
-        
-        or
-            - Nofutur3\
+        bar: Nofutur3\Extensions\GitPanel
 ```
