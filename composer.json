@@ -1,6 +1,6 @@
 {
   "name":"nofutur3/tracy-gitpanel",
-  "description":"",
+  "description":"nette extension - adds the GIT panel to the tracy panel - shows current GIT branch. ",
   "keywords":["nette", "panel", "git", "tracy", "debug", "branch"],
   "license":["MIT"],
   "authors":[
@@ -12,7 +12,7 @@
   ],
   "require":{
     "php":">=5.3.2",
-    "tracy/tracy": "~2.2"
+    "tracy/tracy": "~2.3"
   },
   "autoload":{
     "psr-0":{

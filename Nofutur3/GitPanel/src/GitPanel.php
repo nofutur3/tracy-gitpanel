@@ -108,7 +108,7 @@ class GitPanel implements IBarPanel
                     if ($file == $this->getBranchName()) {
                         $message .= '<strong>' . $file . ' </strong>';
                     } else {
-                        $message .= $file . ' ';
+                        $message .= $file . ' <br>';
                     }
                 }
             }
