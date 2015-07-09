@@ -1,4 +1,4 @@
-# nette-gitpanel
+# tracy-gitpanel
 git panel extension for nette framework
 
 ## installation
