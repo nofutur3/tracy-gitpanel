@@ -1,6 +1,6 @@
 <?php
 
-namespace Nofutur3\Extensions;
+namespace Nofutur3\GitPanel\Diagnostics;
 
 use Tracy\IBarPanel;
 
