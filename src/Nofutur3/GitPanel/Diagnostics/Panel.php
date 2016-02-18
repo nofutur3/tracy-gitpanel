@@ -10,7 +10,7 @@ use Tracy\IBarPanel;
  *
  * @author Jakub Vyvážil
  */
-class GitPanel implements IBarPanel
+class Panel implements IBarPanel
 {
 
     private $currentBranch;
