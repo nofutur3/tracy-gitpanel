@@ -8,6 +8,10 @@ This is simple extension for [Tracy](https://tracy.nette.org/en/) which shows th
  (Have you ever worked in wrong branch? Nope? So you are probably don't need this one.)
 and slightly more useful things. Just check it out.
 
+![not versioned project](docs/not-versioned.png)
+
+![versioned project](docs/screen.png)
+
 ## Installation
 
 The recommended installation is using [composer](https://getcomposer.org/). 
