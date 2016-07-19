@@ -51,4 +51,10 @@ nette:
 ```
 
 
+#### Standalone Tracy
 
+In case you are using Tracy without Nette, you can add GitPanel this way:
+
+```
+\Tracy\Debugger::getBar()->addPanel(new \Nofutur3\GitPanel\Diagnostics\Panel());
+```
