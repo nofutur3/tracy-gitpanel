@@ -18,5 +18,8 @@
     "psr-0":{
       "Nofutur3\\GitPanel\\": "src/"
     }
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.2"
   }
 }
