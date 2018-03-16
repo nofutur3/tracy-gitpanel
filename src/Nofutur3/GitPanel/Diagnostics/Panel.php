@@ -12,11 +12,19 @@ use Tracy\IBarPanel;
  */
 class Panel implements IBarPanel
 {
-    private $currentBranch;
-
     private $protectedBranches = [
         'master',
     ];
+
+    /**
+     * Panel constructor.
+     *
+     * @param array $protectedBranches
+     */
+    public function __construct(array $protectedBranches = [])
+    {
+        $this->protectedBranches = array_merge($this->protectedBranches, $protectedBranches);
+    }
 
     /**
      * Renders HTML code for custom tab.
@@ -45,41 +53,39 @@ class Panel implements IBarPanel
      */
     public function getPanel()
     {
-        if ($this->isUnderVersionControl()) {
-            $title = '<h1>GIT</h1>';
-            $warning = '';
-            $cntTable = '';
+        $warning = '';
+        $template = '<h1>GIT Status</h1><p style="color: #dd4742; font-weight: 500;">%s</p><div class=\"tracy-inner tracy-InfoPanel\"><table><tbody>%s</tbody></table></div>';
+        $content = '';
 
-            if ('master' === $this->getBranchName() || 'staging' === $this->getBranchName()) {
-                $warning = '<p style="color: #dd4742; font-weight: 700;">You are working in '.$this->getBranchName().' branch</p>';
+        if ($this->isUnderVersionControl()) {
+            if ($this->isProtectedBranch()) {
+                $warning = 'The branch <strong>'.$this->getBranchName().'</strong> is protected. Beware!</p>';
             }
 
             // commit message
-            if (null !== $this->getLastCommitMessage()) {
-                $cntTable .= '<tr><td>Last commit</td><td> '.$this->getLastCommitMessage().' </td></tr>';
+            if ($this->getLastCommitMessage()) {
+                $content .= '<tr><td>Last commit</td><td> '.$this->getLastCommitMessage().' </td></tr>';
             }
 
             // heads
-            if (null !== $this->getHeads()) {
-                $cntTable .= '<tr><td>Branches</td><td> '.$this->getHeads().' </td></tr>';
+            if ($this->getHeads()) {
+                $content .= '<tr><td>Branches</td><td> '.$this->getHeads().' </td></tr>';
             }
 
             // remotes
-            if (null !== $this->getRemotes()) {
-                $cntTable .= '<tr><td>Remotes</td><td> '.$this->getRemotes().' </td></tr>';
+            if ($this->getRemotes()) {
+                $content .= '<tr><td>Remotes</td><td> '.$this->getRemotes().' </td></tr>';
             }
 
             // tags
-            if (null !== $this->getTags()) {
-                $cntTable .= '<tr><td>Tags</td><td> '.$this->getTags().' </td></tr>';
+            if ($this->getTags()) {
+                $content .= '<tr><td>Tags</td><td> '.$this->getTags().' </td></tr>';
             }
-
-            $content = '<div class=\"tracy-inner tracy-InfoPanel\"><table><tbody>'.
-                $cntTable.
-                '</tbody></table></div>';
-
-            return $title.$warning.$content;
+        } else {
+            $content = '<p>This project looks unversioned. You may want to run <pre style="background: #000;color: #fff;margin-bottom: 5px;padding:3px">git init</pre> in root directory of the project.</p>';
         }
+
+        return sprintf($template, $warning, $content);
     }
 
     protected function getBranchName()
@@ -124,17 +130,18 @@ class Panel implements IBarPanel
         $message = '';
 
         if ($dir && is_array($files)) {
+            $message .= '<ul style="list-style: none;">';
             foreach ($files as $file) {
                 if ('.' !== $file && '..' !== $file) {
                     if ($file === $this->getBranchName()) {
-                        $message .= '<strong>'.$file.' </strong>';
+                        $message .= '<li><strong>'.$file.'</strong></li>';
                     } else {
-                        $message .= $file.' <br>';
+                        $message .= '<li>'.$file.'</li>';
                     }
                 }
             }
 
-            return $message;
+            return $message.'</ul>';
         }
 
         return null;
