@@ -6,7 +6,7 @@
   "authors":[
     {
       "name":"Jakub Vyvážil",
-      "homepage":"http://www.vyvazil.cz",
+      "homepage":"https://www.vyvazil.cz",
       "email": "jakub@vyvazil.cz"
     }
   ],
@@ -30,7 +30,7 @@
       "@stan",
       "@test"
     ],
-    "cs-fix": "vendor/bin/php-cs-fixer fix --dry-run",
+    "cs-fix": "vendor/bin/php-cs-fixer fix",
     "cs-check": "vendor/bin/php-cs-fixer fix --stop-on-violation --dry-run",
     "stan": "vendor/bin/phpstan analyse --no-progress --level=max --configuration=phpstan.neon src",
     "test": ["vendor/bin/codecept build","vendor/bin/codecept run"]

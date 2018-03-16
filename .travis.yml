@@ -1,5 +1,9 @@
 language: php
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 env:
   - NETTE=default
   - NETTE=~2.3.0
