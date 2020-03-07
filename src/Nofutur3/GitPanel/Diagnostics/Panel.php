@@ -96,7 +96,7 @@ class Panel implements IBarPanel
         if ($dir && is_readable($head)) {
             $branch = file_get_contents($head);
             if (0 === strpos($branch, 'ref:')) {
-                $parts = explode('/', $branch);
+                $parts = explode('/', $branch, 3);
 
                 return substr($parts[2], 0, -1);
             }
@@ -126,7 +126,13 @@ class Panel implements IBarPanel
     {
         $dir = $this->getDirectory();
 
-        $files = scandir($dir.'/.git/refs/heads');
+        $files = [];
+        $iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($dir.'/.git/refs/heads', \FilesystemIterator::SKIP_DOTS));
+        $iterator->rewind();
+        while ($iterator->valid()) {
+            $files[] = $iterator->getSubPathName();
+            $iterator->next();
+        }
         $message = '';
 
         if ($dir && is_array($files)) {
