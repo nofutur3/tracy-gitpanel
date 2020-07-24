@@ -12,7 +12,9 @@ class UnitCest
     }
 
     // tests
-    public function tryToTest(UnitTester $I)
+    public function addPanelTest(UnitTester $I)
     {
+        \Tracy\Debugger::getBar()
+            ->addPanel(new \Nofutur3\GitPanel\Diagnostics\Panel(['production','staging']));
     }
 }

@@ -1,0 +1,4 @@
+- name: phpstan (PHP Static Analysis)
+  uses: actions-x/phpstan@v1
+  with:
+    level: 4
