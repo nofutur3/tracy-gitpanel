@@ -80,3 +80,31 @@ Or with protected branches:
 \Tracy\Debugger::getBar()
     ->addPanel(new \Nofutur3\GitPanel\Diagnostics\Panel(['production','staging']));
 ```
+
+## Support
+
+💲 Do you like this tool? Support me with few bucks to cover coffee expenses ;)
+
+<table>
+    <tr style="width: 100%">
+        <td style="width: 25%">
+            Hey! You can send me money on Revolut by following this link: <a href="https://revolut.me/jakub9sv">https://revolut.me/jakub9sv</a>
+        </td>
+        <td style="width: 25%">
+            bitcoin<br>
+            <img src="docs/btc.png" width="260px" />
+            <span style="word-wrap: anywhere">bc1q5ednnq59x70sv0zlk9w5p4fm92srlwljhr7yk6</span>
+        </td>
+        <td style="width: 25%">
+            lightning network<br>
+            <img src="docs/ln.png" width="260px" />
+            <span style="word-wrap: anywhere">lnurl1dp68gurn8ghj7ampd3kx2ar0veekzar0wd5xjtnrdakj7tnhv4kxctttdehhwm30d3h82unvwqhhwunev4jxjar0wgunw3gu8z2</span>
+        </td>
+        <td style="width: 25%">
+            litecoin<br>
+            <img src="docs/ltc.png" width="260px" />
+            <span style="word-wrap: anywhere">ltc1q3e8g32u8ltgw5ycymw42feuvurgx89yayuxw9u</span>
+        </td>
+    </tr>
+</table>
+
