@@ -1,0 +1,52 @@
+<?php
+
+namespace Nofutur3\GitPanel;
+
+use Diagnostics\Panel;
+
+/** @var Panel $this */
+
+$data = [
+    'Last commit' => $this->gitInformation->getCommitMessage(),
+    'Branches' => $this->decorateBranches($this->gitInformation->getBranches()),
+    'Remotes' => implode(' ', $this->gitInformation->getRemotes()),
+    'Tags' => implode(' ', $this->gitInformation->getTags()),
+];
+?>
+
+<style class="tracy-debug">
+	#tracy-debug .tracy-InfoPanel td {
+		white-space: nowrap;
+	}
+	#tracy-debug .tracy-InfoPanel td:nth-child(2) {
+		font-weight: bold;
+		width: 60%;
+	}
+	#tracy-debug .tracy-InfoPanel td[colspan='2'] b {
+		float: right;
+		margin-left: 2em;
+		white-space: normal;
+	}
+</style>
+
+<h1>GIT status</h1>
+
+<div class="tracy-inner tracy-InfoPanel">
+<div class="tracy-inner-container">
+
+<?php if ($this->isProtectedBranch()): ?>
+<p>The branch <strong><?= $this->gitInformation->getCurrentBranch() ?></strong> is protected. Beware!</p>
+<?php endif; ?>
+
+<table class="tracy-sortable">
+<?php foreach ($data as $key => $val): ?>
+<tr>
+<?php if ($val): ?>
+	<td><?= $key ?></td><td><?= $val ?></td>
+<?php endif ?>
+</tr>
+<?php endforeach ?>
+</table>
+
+</div>
+</div>
