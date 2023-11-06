@@ -1,8 +1,9 @@
-# tracy-gitpanel
+# GIT Panel for Tracy 
 
-[![Build Status](https://travis-ci.org/nofutur3/tracy-gitpanel.svg?branch=master)](https://travis-ci.org/nofutur3/tracy-gitpanel)
-[![Downloads this Month](https://img.shields.io/packagist/dm/nofutur3/tracy-gitpanel.svg)](https://packagist.org/packages/nofutur3/tracy-gitpanel)
-[![Latest stable](https://img.shields.io/packagist/v/nofutur3/tracy-gitpanel.svg)](https://packagist.org/packages/nofutur3/tracy-gitpanel)
+[![Build Status](https://img.shields.io/travis/nofutur3/tracy-gitpanel.svg?style=for-the-badge)](https://travis-ci.org/nofutur3/tracy-gitpanel)
+[![Downloads this Month](https://img.shields.io/packagist/dm/nofutur3/tracy-gitpanel.svg?style=for-the-badge)](https://packagist.org/packages/nofutur3/tracy-gitpanel)
+[![Latest stable](https://img.shields.io/packagist/v/nofutur3/tracy-gitpanel.svg?style=for-the-badge)](https://packagist.org/packages/nofutur3/tracy-gitpanel)
+[![License](https://img.shields.io/github/license/nofutur3/tracy-gitpanel.svg?style=for-the-badge)](https://packagist.org/packages/nofutur3/tracy-gitpanel)
 
 --- 
 
@@ -29,6 +30,17 @@ $configurator
     ->createRobotLoader()
     ->addDirectory(__DIR__ . 'path/to/library/');
 ```
+
+## Supported PHP versions
+
+| PHP version | Supported till |
+| --- | --- |
+| 5.6 | 0.9.4 |
+| 7.0 | 0.9.4 |
+| 7.1 |  |
+| 7.2 |  |
+| 7.3 |  |
+| 7.4 |  |
 
 ## Configuration
 
