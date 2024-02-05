@@ -37,7 +37,6 @@ class Panel implements IBarPanel
 
         $resolver = new GitStateResolver();
         $this->gitInformation = $resolver->getInformation();
-        dump($this->gitInformation);
     }
 
     /**
